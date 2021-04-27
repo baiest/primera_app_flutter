@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nueva_app/floating_action_button_green.dart';
+import 'package:nueva_app/widgets/floating_action_button_green.dart';
 
 class PhotoDescriptionCard extends StatelessWidget {
   String tituloCard = "";

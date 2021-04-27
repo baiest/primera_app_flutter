@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nueva_app/descripcion_profile.dart';
-import 'package:nueva_app/gradiant_back.dart';
-import 'option_list.dart';
+import '../widgets/descripcion_profile.dart';
+import 'package:nueva_app/widgets/gradiant_back.dart';
+import '../widgets/option_list.dart';
 
 class HeaderProfile extends StatelessWidget {
   String pathImage = "assets/img/spider.png";

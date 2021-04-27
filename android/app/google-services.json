@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "825864160097",
+    "project_id": "platzitripsflutter-5a189",
+    "storage_bucket": "platzitripsflutter-5a189.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825864160097:android:584e32fee816e8ece0fb20",
+        "android_client_info": {
+          "package_name": "com.baiest.platzitripsflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825864160097-2njasm269emb5blanitascp8snborsv6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.baiest.platzitripsflutter",
+            "certificate_hash": "ae83eceb2c71459dfbeb449bf11442519012a626"
+          }
+        },
+        {
+          "client_id": "825864160097-muiqibs8t9kt90sreijljpvuktnep59q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnZrAhqJNORosWyt39UJawa1WNicLZHvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825864160097-muiqibs8t9kt90sreijljpvuktnep59q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nueva_app/profile_button_header.dart';
+import 'package:nueva_app/User/ui/screens/profile_button_header.dart';
 
 class OptionList extends StatelessWidget {
   @override

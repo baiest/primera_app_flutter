@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'header_profile.dart';
+import '../screens/header_profile.dart';
 import 'photo_list_trip.dart';
 
 class ProfileTrips extends StatelessWidget {
