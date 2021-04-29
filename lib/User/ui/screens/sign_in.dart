@@ -57,8 +57,10 @@ class _SignInScreen extends State<SignInScreen> {
               ButtonGreen(
                 text: "Login with Gmail",
                 onPressed: () {
-                  userBloc.signIn().then((UserCredential user) =>
-                      print("El usuario es ${user.toString()}"));
+                  userBloc.signOut();
+                  userBloc.signIn().then((UserCredential user) {
+                    print("El usuario es ${user.user.displayName}");
+                  });
                 },
                 altura: 50.0,
                 anchura: 300.0,
