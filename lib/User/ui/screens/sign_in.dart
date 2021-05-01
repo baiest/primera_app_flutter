@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:nueva_app/User/model/user.dart' as ModelUser;
 import 'package:nueva_app/platzi_trips_cupertino.dart';
 import 'package:nueva_app/widgets/button_green.dart';
 import 'package:nueva_app/widgets/gradiant_back.dart';
@@ -59,7 +60,13 @@ class _SignInScreen extends State<SignInScreen> {
                 onPressed: () {
                   userBloc.signOut();
                   userBloc.signIn().then((UserCredential user) {
-                    print("El usuario es ${user.user.displayName}");
+                    userBloc.updateUserData(ModelUser.User(
+                      uid: user.user.uid,
+                      name: user.user.displayName,
+                      email: user.user.email,
+                      photoURL: user.user.photoURL,
+                    ));
+                    print("Informacion mandad a db");
                   });
                 },
                 altura: 50.0,

@@ -1,8 +1,19 @@
+import 'package:flutter/cupertino.dart';
+import 'package:nueva_app/User/model/user.dart';
+
 class Place {
+  String id;
   String name;
   String where;
-  String type;
-  String steps;
+  String urlImage;
+  int likes;
+  User userOwner;
 
-  Place(this.name, this.where, this.type, this.steps);
+  Place(
+      {Key key,
+      @required this.name,
+      @required this.where,
+      @required this.urlImage,
+      this.likes,
+      @required this.userOwner});
 }
