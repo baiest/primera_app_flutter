@@ -5,15 +5,10 @@ import 'package:nueva_app/User/model/user.dart';
 import '../widgets/descripcion_profile.dart';
 import 'package:nueva_app/widgets/gradiant_back.dart';
 import '../widgets/option_list.dart';
-import 'package:nueva_app/User/model/user.dart';
 
 class HeaderProfile extends StatelessWidget {
   UserBloc userBloc;
-
   User user;
-  String pathImage = "assets/img/spider.png";
-  String nombre = "Juan Ballesteros";
-  String correo = "juanballesteros2001@gmail.com";
 
   @override
   Widget build(BuildContext context) {
