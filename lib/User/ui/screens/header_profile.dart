@@ -63,9 +63,9 @@ class HeaderProfile extends StatelessWidget {
           photoURL: snapshot.data.photoURL);
       return Stack(
         children: [
-          GradiantBack("Profile", 550.0),
+          GradiantBack(title: "Profile", size: 550.0),
           DescripcionProfile(user),
-          OptionList()
+          OptionList(),
         ],
       );
     }
