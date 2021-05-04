@@ -22,9 +22,11 @@ class _ProfileButtonHeader extends State<ProfileButtonHeader> {
     return Container(
         height: widget.isMini ? 40 : 80,
         child: FloatingActionButton(
-            foregroundColor: Colors.blue,
-            backgroundColor: widget.isActive ? Colors.white : Colors.white38,
-            onPressed: widget.onPressed,
-            child: Icon(widget.icono)));
+          foregroundColor: Colors.blue,
+          backgroundColor: widget.isActive ? Colors.white : Colors.white38,
+          onPressed: widget.onPressed,
+          child: Icon(widget.icono),
+          heroTag: null,
+        ));
   }
 }

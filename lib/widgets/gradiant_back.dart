@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class GradiantBack extends StatelessWidget {
   String title = "Popular";
   double size;
-  GradiantBack({Key key, this.title, this.size});
+  double left;
+  GradiantBack({Key key, this.title, this.size, this.left = 20.0});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -44,7 +45,7 @@ class GradiantBack extends StatelessWidget {
               ),
             ),
             Padding(
-                padding: EdgeInsets.only(top: 40.0, left: 20.0),
+                padding: EdgeInsets.only(top: 40.0, left: left),
                 child: Text(
                   title,
                   style: TextStyle(
