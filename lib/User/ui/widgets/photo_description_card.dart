@@ -48,10 +48,10 @@ class PhotoDescriptionCard extends StatelessWidget {
       ),
     );
 
-    final cardButton = Stack(
-      alignment: Alignment(0.9, 1.5),
-      children: [card, FloatingActionButtonGreen()],
-    );
+    final cardButton = Stack(alignment: Alignment(0.9, 1.5), children: [
+      card,
+      FloatingActionButtonGreen(iconData: Icons.favorite_outline),
+    ]);
 
     return Container(
         height: 130.0,

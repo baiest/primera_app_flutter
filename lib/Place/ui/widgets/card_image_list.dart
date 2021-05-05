@@ -12,12 +12,42 @@ class CardImageList extends StatelessWidget {
         padding: EdgeInsets.all(25.0),
         scrollDirection: Axis.horizontal,
         children: [
-          CardImage('assets/img/beach_palm.jpeg'),
-          CardImage('assets/img/beach.jpeg'),
-          CardImage('assets/img/mountain_stars.jpeg'),
-          CardImage('assets/img/mountain.jpeg'),
-          CardImage('assets/img/river.jpeg'),
-          CardImage('assets/img/sunset.jpeg'),
+          CardImageWithFabIcon(
+              height: 250.0,
+              width: 250.0,
+              right: 20.0,
+              pathImage: 'assets/img/beach_palm.jpeg',
+              iconData: Icons.favorite_border),
+          CardImageWithFabIcon(
+              height: 250.0,
+              width: 250.0,
+              right: 20.0,
+              pathImage: 'assets/img/beach.jpeg',
+              iconData: Icons.favorite_border),
+          CardImageWithFabIcon(
+              height: 250.0,
+              width: 250.0,
+              right: 20.0,
+              pathImage: 'assets/img/mountain_stars.jpeg',
+              iconData: Icons.favorite_border),
+          CardImageWithFabIcon(
+              height: 250.0,
+              width: 250.0,
+              right: 20.0,
+              pathImage: 'assets/img/mountain.jpeg',
+              iconData: Icons.favorite_border),
+          CardImageWithFabIcon(
+              height: 250.0,
+              width: 250.0,
+              right: 20.0,
+              pathImage: 'assets/img/river.jpeg',
+              iconData: Icons.favorite_border),
+          CardImageWithFabIcon(
+              height: 250.0,
+              width: 250.0,
+              right: 20.0,
+              pathImage: 'assets/img/sunset.jpeg',
+              iconData: Icons.favorite_border),
         ],
       ),
     );

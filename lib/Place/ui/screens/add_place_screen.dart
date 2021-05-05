@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:nueva_app/Place/ui/widgets/card_image.dart';
+import 'package:nueva_app/Place/ui/widgets/title_input_location.dart';
 import 'package:nueva_app/widgets/gradiant_back.dart';
 import 'package:nueva_app/widgets/text_input.dart';
 
 class AddPlaceScreen extends StatefulWidget {
-  FileImage image;
+  File image;
 
   AddPlaceScreen({Key key, this.image});
 
@@ -30,15 +34,15 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
           Row(
             children: [
               Container(
-                padding: EdgeInsets.only(top: 25.0, left: 5.0),
+                padding: EdgeInsets.only(top: 25.0),
                 child: SizedBox(
-                  height: 45.0,
-                  width: 45.0,
+                  height: 60.0,
+                  width: 60.0,
                   child: IconButton(
                     icon: Icon(
                       Icons.keyboard_arrow_left,
-                      size: 50.0,
                       color: Colors.white,
+                      size: 60.0,
                     ),
                     onPressed: () {
                       Navigator.pop(context);
@@ -49,10 +53,17 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
             ],
           ),
           Container(
-            margin: EdgeInsets.only(top: 350.0, bottom: 20.0),
+            margin: EdgeInsets.only(top: 120.0, bottom: 20.0),
             child: ListView(
               children: [
-                Container(),
+                Container(
+                  margin: EdgeInsets.only(bottom: 30.0),
+                  alignment: Alignment.center,
+                  child: CardImageWithFabIcon(
+                    pathImage: "assets/img/beach_palm.jpeg",
+                    iconData: Icons.camera,
+                  ),
+                ),
                 Container(
                   margin: EdgeInsets.only(bottom: 20.0),
                   child: TextInput(
@@ -67,6 +78,13 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
                   inputType: TextInputType.multiline,
                   maxLines: 4,
                   controller: _controllerdescription,
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20.0),
+                  child: TextInputLocation(
+                    hintText: "Add Location",
+                    iconData: Icons.location_on,
+                  ),
                 ),
               ],
             ),

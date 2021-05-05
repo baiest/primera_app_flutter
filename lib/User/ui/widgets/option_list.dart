@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:nueva_app/User/bloc/bloc_user.dart';
@@ -22,10 +24,10 @@ class OptionList extends StatelessWidget {
             //ProfileButtonHeader(Icons.bookmark_border, true, true),
             ProfileButtonHeader(Icons.vpn_key_outlined, true, false, () => {}),
             ProfileButtonHeader(Icons.add, false, true, () {
-              FileImage image;
+              File image;
               Navigator.push(context,
                   MaterialPageRoute(builder: (BuildContext context) {
-                  return AddPlaceScreen(
+                return AddPlaceScreen(
                   image: image,
                 );
               }));
