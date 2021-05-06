@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:nueva_app/Place/model/place.dart';
 import 'package:nueva_app/User/model/user.dart' as Model;
 
@@ -31,7 +32,15 @@ class CloudFirestoreAPI {
       'name': place.name,
       'description': place.description,
       'likes': place.likes,
-      'userOwner': "${USERS}/${user.uid}" //reference
+      'userOwner': _db.doc("$USERS/${user.uid}") //reference
+    }).then((DocumentReference dr) {
+      dr.get().then((DocumentSnapshot snapshot) {
+        //ID Referencia Array
+        DocumentReference refUser = _db.collection(USERS).doc(user.uid);
+        refUser.update({
+          'myPlaces': FieldValue.arrayUnion([_db.doc("$PLACES/${snapshot.id}")])
+        });
+      });
     });
   }
 }
