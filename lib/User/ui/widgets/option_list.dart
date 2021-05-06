@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:nueva_app/User/bloc/bloc_user.dart';
 import 'package:nueva_app/User/ui/screens/profile_button_header.dart';
 import 'package:nueva_app/Place/ui/screens/add_place_screen.dart';
@@ -24,13 +25,16 @@ class OptionList extends StatelessWidget {
             //ProfileButtonHeader(Icons.bookmark_border, true, true),
             ProfileButtonHeader(Icons.vpn_key_outlined, true, false, () => {}),
             ProfileButtonHeader(Icons.add, false, true, () {
-              File image;
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (BuildContext context) {
-                return AddPlaceScreen(
-                  image: image,
-                );
-              }));
+              ImagePicker()
+                  .getImage(source: ImageSource.camera)
+                  .then((PickedFile image) {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return AddPlaceScreen(
+                    image: image,
+                  );
+                }));
+              }).catchError((onError) => print(Error));
             }),
             ProfileButtonHeader(
                 Icons.exit_to_app, true, false, () => {userBloc.signOut()}),

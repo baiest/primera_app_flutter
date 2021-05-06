@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:nueva_app/Place/model/place.dart';
 import 'package:nueva_app/Place/ui/widgets/card_image.dart';
 import 'package:nueva_app/Place/ui/widgets/title_input_location.dart';
@@ -11,7 +12,7 @@ import 'package:nueva_app/widgets/gradiant_back.dart';
 import 'package:nueva_app/widgets/text_input.dart';
 
 class AddPlaceScreen extends StatefulWidget {
-  File image;
+  PickedFile image;
 
   AddPlaceScreen({Key key, this.image});
 
@@ -65,7 +66,7 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
                   margin: EdgeInsets.only(bottom: 30.0),
                   alignment: Alignment.center,
                   child: CardImageWithFabIcon(
-                    pathImage: "assets/img/beach_palm.jpeg",
+                    pathImage: widget.image.path,
                     iconData: Icons.camera,
                   ),
                 ),
