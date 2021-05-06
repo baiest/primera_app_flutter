@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:image_picker/image_picker.dart';
@@ -97,16 +99,35 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
                   child: ButtonPurple(
                     text: "Add place",
                     onPressed: () {
+                      print("Desactivar");
+
+                      //ID usuario logueado actualmente
                       //Guardar pplace en firebase
-                      userBloc
-                          .updatePlaceData(Place(
-                        name: _controllerTitlePlace.text,
-                        description: _controllerdescription.text,
-                        likes: 0,
-                      ))
-                          .whenComplete(() {
-                        print("TERMINO DE GUARDAR PLACE EN FIREBASE");
-                        Navigator.pop(context);
+                      userBloc.currentUser.then((User user) {
+                        String path =
+                            "${user.uid}/${DateTime.now().toString()}.jpg";
+                        if (user != null) {
+                          userBloc
+                              .uploadFile(path, new File(widget.image.path))
+                              .then((TaskSnapshot snapshot) {
+                            snapshot.ref.getDownloadURL().then((urlImage) {
+                              print("URLIMAGE: $urlImage");
+
+                              //2. Subir informacion de place a firestore
+                              userBloc
+                                  .updatePlaceData(Place(
+                                name: _controllerTitlePlace.text,
+                                description: _controllerdescription.text,
+                                urlImage: urlImage,
+                                likes: 0,
+                              ))
+                                  .whenComplete(() {
+                                print("TERMINO DE GUARDAR PLACE EN FIREBASE");
+                                Navigator.pop(context);
+                              });
+                            });
+                          });
+                        }
                       });
                     },
                   ),
