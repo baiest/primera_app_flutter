@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:nueva_app/Place/model/place.dart';
 import 'photo_description_card.dart';
 
 class PhotoCard extends StatelessWidget {
-  String pathImage;
-  String titulo;
-  String description;
-  String stepts;
+  Place place;
 
-  PhotoCard(this.pathImage, this.titulo, this.description, this.stepts);
+  PhotoCard(this.place);
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -19,7 +17,7 @@ class PhotoCard extends StatelessWidget {
             EdgeInsets.only(left: 20.0, right: 20.0, bottom: 80.0, top: 20.0),
         decoration: BoxDecoration(
             image: DecorationImage(
-                fit: BoxFit.cover, image: AssetImage(pathImage)),
+                fit: BoxFit.cover, image: NetworkImage(place.urlImage)),
             borderRadius: BorderRadius.all(Radius.circular(15.0)),
             shape: BoxShape.rectangle,
             boxShadow: [
@@ -31,7 +29,10 @@ class PhotoCard extends StatelessWidget {
 
     return Stack(
       alignment: Alignment(0.0, 0.9),
-      children: [card, PhotoDescriptionCard(titulo, description, stepts)],
+      children: [
+        card,
+        PhotoDescriptionCard(place.name, place.description, place.likes)
+      ],
     );
   }
 }

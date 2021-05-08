@@ -4,7 +4,7 @@ import 'package:nueva_app/widgets/floating_action_button_green.dart';
 class PhotoDescriptionCard extends StatelessWidget {
   String tituloCard = "";
   String description = "";
-  String stepts = "";
+  int stepts;
 
   PhotoDescriptionCard(this.tituloCard, this.description, this.stepts);
   @override
@@ -14,7 +14,7 @@ class PhotoDescriptionCard extends StatelessWidget {
     final steps = Container(
       margin: EdgeInsets.only(left: 10.0, top: 10.0),
       child: Text(
-        stepts,
+        stepts.toString(),
         style:
             TextStyle(fontFamily: 'Lato', fontSize: 15.0, color: Colors.orange),
       ),
@@ -38,6 +38,7 @@ class PhotoDescriptionCard extends StatelessWidget {
     );
 
     final card = Container(
+      width: 250.0,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -50,7 +51,10 @@ class PhotoDescriptionCard extends StatelessWidget {
 
     final cardButton = Stack(alignment: Alignment(0.9, 1.5), children: [
       card,
-      FloatingActionButtonGreen(iconData: Icons.favorite_outline),
+      FloatingActionButtonGreen(
+        iconData: Icons.favorite_outline,
+        onPressed: () {},
+      ),
     ]);
 
     return Container(
