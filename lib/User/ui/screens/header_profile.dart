@@ -7,67 +7,19 @@ import 'package:nueva_app/widgets/gradiant_back.dart';
 import '../widgets/option_list.dart';
 
 class HeaderProfile extends StatelessWidget {
-  UserBloc userBloc;
   User user;
 
+  HeaderProfile({Key key, @required this.user});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
 
-    userBloc = BlocProvider.of<UserBloc>(context);
-
-    return StreamBuilder(
-      stream: userBloc.streamFirebase,
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        switch (snapshot.connectionState) {
-          case ConnectionState.waiting:
-            return CircularProgressIndicator();
-            break;
-          case ConnectionState.none:
-            return CircularProgressIndicator();
-            break;
-          case ConnectionState.active:
-            return showProfileData(snapshot);
-            break;
-          case ConnectionState.done:
-            return showProfileData(snapshot);
-            break;
-        }
-      },
-    );
-    /*return Stack(
+    return Stack(
       children: [
-        GradiantBack("Profile", 550.0),
-        DescripcionProfile(pathImage, nombre, correo),
+        GradiantBack(title: "Profile", size: 550.0),
+        DescripcionProfile(user),
         OptionList()
       ],
-    );*/
-  }
-
-  Widget showProfileData(AsyncSnapshot snapshot) {
-    if (!snapshot.hasData || snapshot.hasError) {
-      print("No logeado");
-      return Container(
-          height: 250.0,
-          child: Row(
-            children: [
-              CircularProgressIndicator(),
-              Text("No se pudo cargar la información")
-            ],
-          ));
-    } else {
-      print("Logeado");
-      user = User(
-          name: snapshot.data.displayName,
-          email: snapshot.data.email,
-          photoURL: snapshot.data.photoURL);
-      return Stack(
-        children: [
-          GradiantBack(title: "Profile", size: 550.0),
-          DescripcionProfile(user),
-          OptionList(),
-        ],
-      );
-    }
+    );
   }
 }
