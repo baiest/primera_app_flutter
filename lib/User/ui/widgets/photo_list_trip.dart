@@ -52,17 +52,17 @@ class PhotoListTrip extends StatelessWidget {
             switch (snapshot.connectionState) {
               case ConnectionState.done:
                 return ListView(
-                    children: userBloc.buildPlaces(snapshot.data.docs));
+                    children: userBloc.buildMyPlaces(snapshot.data.docs));
               case ConnectionState.active:
                 return ListView(
-                    children: userBloc.buildPlaces(snapshot.data.docs));
+                    children: userBloc.buildMyPlaces(snapshot.data.docs));
               case ConnectionState.waiting:
                 return Center(child: CircularProgressIndicator());
               case ConnectionState.none:
                 return Center(child: CircularProgressIndicator());
               default:
                 return ListView(
-                    children: userBloc.buildPlaces(snapshot.data.docs));
+                    children: userBloc.buildMyPlaces(snapshot.data.docs));
             }
           }
         },

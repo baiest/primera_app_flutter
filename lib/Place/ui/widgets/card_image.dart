@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../widgets/floating_action_button_green.dart';
 
@@ -9,6 +10,7 @@ class CardImageWithFabIcon extends StatelessWidget {
   final double width;
   final double right;
   final IconData iconData;
+  final bool internet;
   final VoidCallback onPressedFabIcon;
 
   CardImageWithFabIcon(
@@ -17,6 +19,7 @@ class CardImageWithFabIcon extends StatelessWidget {
       this.width = 350.0,
       this.height = 250.0,
       this.right = 0.0,
+      this.internet = false,
       @required this.onPressedFabIcon,
       @required this.iconData});
   @override
@@ -30,9 +33,11 @@ class CardImageWithFabIcon extends StatelessWidget {
             image: DecorationImage(
                 fit: BoxFit.cover,
                 //image: AssetImage(pathImage),
-                image: pathImage.contains('assets')
-                    ? AssetImage(pathImage)
-                    : new FileImage(File(pathImage))),
+                image: internet
+                    ? CachedNetworkImageProvider(pathImage)
+                    : pathImage.contains('assets')
+                        ? AssetImage(pathImage)
+                        : FileImage(File(pathImage))),
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
             shape: BoxShape.rectangle,
             boxShadow: <BoxShadow>[

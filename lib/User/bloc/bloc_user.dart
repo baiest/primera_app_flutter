@@ -6,6 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:nueva_app/Place/model/place.dart';
 import 'package:nueva_app/Place/repository/firebase_storage_repository.dart';
+import 'package:nueva_app/Place/ui/widgets/card_image.dart';
 import 'package:nueva_app/User/model/user.dart' as ModelUser;
 import 'package:nueva_app/User/repository/auth_repository.dart';
 import 'package:nueva_app/User/repository/cloud_firestore_api.dart';
@@ -48,8 +49,8 @@ class UserBloc implements Bloc {
       .snapshots();
   Stream<QuerySnapshot> get placesStream => _placesListStream;
 
-  List<PhotoCard> buildPlaces(List<DocumentSnapshot> placesListSnapshot) =>
-      _cloudFirestoreRepository.buildPlaces(placesListSnapshot);
+  List<PhotoCard> buildMyPlaces(List<DocumentSnapshot> placesListSnapshot) =>
+      _cloudFirestoreRepository.buildMyPlaces(placesListSnapshot);
 
   Stream<QuerySnapshot> myPlacesListStream(String uid) => FirebaseFirestore
       .instance
@@ -58,6 +59,10 @@ class UserBloc implements Bloc {
           isEqualTo: FirebaseFirestore.instance
               .doc("${CloudFirestoreAPI().USERS}/$uid"))
       .snapshots();
+
+  List<CardImageWithFabIcon> buildPlaces(
+          List<DocumentSnapshot> placesListSnapshot) =>
+      _cloudFirestoreRepository.buildPlaces(placesListSnapshot);
   @override
   void dispose() {}
 }
